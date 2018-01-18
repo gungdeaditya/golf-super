@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Solid State</title>
+        <title>Super Golf</title>
         <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/ionicons.min.css">
         <link href="https://fonts.googleapis.com/css?family=Istok+Web:400,400i,700,700i" rel="stylesheet">
@@ -14,27 +14,29 @@
 
     </head>
 <body>
-    <!-- preloader -->
     <div id="preloader"></div>
-    <!-- end of preloader -->
 
     <div class="body-content" style="display:none;">
         <div class="navbar-solid-state">
              <!-- Header -->
             <header id="header" class="alt">
-                <!-- <h1><a href="index.html" class="a-transparent">Solid State</a></h1> -->
                 <nav>
                     <a href="#menu" class="a-menu">Menu <i class="ion-android-menu"></i> </a>
                 </nav>
             </header>
 
-            <!-- Menu -->
             <nav id="menu">
                 <div class="inner">
                     <h2>Menu</h2>
                     <ul class="links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="<?php echo base_url(); ?>Main/login">Login</a></li>
+                        <li><a href="<?php echo base_url(); ?>main">Home</a></li>
+                        <?php if($this->session->userdata('logged_in')) { ?>
+                        <li><a href="<?php echo base_url(); ?>dashboard">Dasbor Admin</a></li>
+                        <li><a href="<?php echo base_url(); ?>login/logout">Logout Admin</a></li>
+                        <?php } else {?>
+                        <li><a href="<?php echo base_url(); ?>login">Login</a></li>
+                        <?php } ?>
+                        <!--<li><a href="<?php echo base_url(); ?>main/dashboard">Dashboard</a></li>-->
                         <!-- <li><a href="#">Log In</a></li>
                         <li><a href="#">Sign Up</a></li> -->
                     </ul>
@@ -47,21 +49,21 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>FEEL THE FREE AND GREEN SENSATION</h2>
+                        <h2>JUST PLAY GOLF, WITH SUPER GOLF</h2>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-12"> 
-                        <p>ANOTHER FREE + FULLY RESPONSIVE SITE TEMPLATE BY <a href="http://www.themewagon.com">THEMEWAGON</a></p>
+                        <p>Moment is never like before</p>
                     </div>
                 </div>
 
-                <div class="row">
+                <!--<div class="row">
                     <div class="col-md-12">
                         <a href="#" class="btn btn-banner">DEFAULT</a>
                     </div>
-                </div>
+                </div>-->
             </div>
         </section>
 
@@ -77,7 +79,7 @@
                                 <p>
                                     Ada tiga tipe stik golf (club) yaitu: wood, iron, dan putter. Wedge adalah iron yang digunakan untuk memukul pada jarak yang pendek. Wood digunakan untuk memukul jarak yang sangat jauh. Sedangkan iron pada jarak menengah. Putter hampir selalu digunakan untuk melakukan pukulan di atas green.
                                 </p>
-                                <a href="#" class="btn btn-learn-more">LEARN MORE <i class="ion-ios-arrow-right"></i></a>
+                                <!--<a href="#" class="btn btn-learn-more">LEARN MORE <i class="ion-ios-arrow-right"></i></a>-->
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -104,7 +106,7 @@
                                     Sepatu sangat penting digunakan dalam olahraga ini, selain lapangan yang sangat luas dan hempasan bola yang terbilang jauh maka mengharuskan kita juga untuk berjalan mengitari lapangan.
                                     Oleh karena itu sepatu yang kece dapat membuat kamu terlihat elegan saat memainkan olahraga ini.
                                 </p>
-                                <a href="#" class="btn btn-learn-more">LEARN MORE <i class="ion-ios-arrow-right"></i></a>
+                                <!--<a href="#" class="btn btn-learn-more">LEARN MORE <i class="ion-ios-arrow-right"></i></a>-->
                             </div>
                         </div>
                     </div>
@@ -124,7 +126,7 @@
                                 <p>
                                     Topi termasuk hal opsional, karena melindungi kita dari terik matahari yang panas dilapangan golf, sehingga disarankan untuk kamu yang memainkan olahraga ini untuk menggunakan topi yang kece juga.
                                 </p>
-                                <a href="#" class="btn btn-learn-more">LEARN MORE <i class="ion-ios-arrow-right"></i></a>
+                                <!--<a href="#" class="btn btn-learn-more">LEARN MORE <i class="ion-ios-arrow-right"></i></a>-->
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -166,13 +168,17 @@
                         <div class="col-md-6">
                             <div class="four-features">
                                 <div class="features-img">
-                                    <img src="<?php echo $obj->img; ?>" alt="Responsive image" class="img-content">
+                                    <img src="<?php echo base_url(); ?>/uploads/<?php echo $obj->img; ?>" alt="Responsive image" class="img-content" style="object-fit: cover;">
                                 </div>
                                 <div class="features-content">
                                     <h3><?php echo $obj->title; ?></h3>
                                     <p>
                                     <?php 
-                                    echo $obj->content;?>
+                                    $des = $obj->content;
+                                    $des = character_limiter($des,100);
+                                    // echo $obj->content;
+                                    echo $des;
+                                    ?>
                                     </p>
                                     <a href="<?php echo base_url();?>Main/detail/<?php echo $obj->id ?>" class="btn btn-learn-more">LEARN MORE <i class="ion-ios-arrow-right"></i></a>
                                 </div>
@@ -181,16 +187,16 @@
                         <?php } ?>
                     </div>
 
-                    <div class="row">
+                    <!--<div class="row">
                         <div class="col-md-12">
                             <a href="#" class="btn btn-expand-all">EXPAND ALL</a>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
         </section>
 
         <section id="footer">
-            <div class="container">
+            <!--<div class="container">
                 <div class="footer-top">
                     <div class="section-heading">
                         <div class="title">
@@ -262,7 +268,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <div class="footer-bottom">
                     <div class="row">
                         <div class="col-md-12">

@@ -27,13 +27,13 @@
 <!--top-Header-menu-->
 <div id="user-nav" class="navbar navbar-inverse">
   <ul class="nav">
-    <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome User</span><b class="caret"></b></a>
+    <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome</span><b class="caret"></b></a>
       <ul class="dropdown-menu">
         <!--<li><a href="#"><i class="icon-user"></i> My Profile</a></li>
         <li class="divider"></li>
         <li><a href="#"><i class="icon-check"></i> My Tasks</a></li>
         <li class="divider"></li>-->
-        <li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
+        <li><a href="<?php echo base_url(); ?>login/logout"><i class="icon-key"></i> Log Out</a></li>
       </ul>
     </li>
     <!--<li class="dropdown" id="menu-messages"><a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle"><i class="icon icon-envelope"></i> <span class="text">Messages</span> <span class="label label-important">5</span> <b class="caret"></b></a>
@@ -63,13 +63,13 @@
 
 <div id="sidebar"> <a href="#" class="visible-phone"><i class="icon icon-list"></i>Forms</a>
   <ul>
-    <li><a href="<?php echo base_url(); ?>Main/dashboard"><i class="icon icon-home"></i> <span>Beranda</span></a> </li>
-    <li class="active"><a href="<?php echo base_url(); ?>Main/add"><i class="icon icon-inbox"></i> <span>Tambah Artikel</span></a> </li>
+    <li><a href="<?php echo base_url(); ?>dashboard"><i class="icon icon-home"></i> <span>Beranda</span></a> </li>
+    <li class="active"><a href="<?php echo base_url(); ?>dashboard/add"><i class="icon icon-inbox"></i> <span>Tambah Artikel</span></a> </li>
   </ul>
 </div>
 <div id="content">
   <div id="content-header">
-    <div id="breadcrumb"> <a href="<?php echo base_url(); ?>Main/dashboard" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Beranda</a> <a href="<?php echo base_url(); ?>Main/dashboard" class="current">Tambah Artikel</a> </div>
+    <div id="breadcrumb"> <a href="<?php echo base_url(); ?>dashboard" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Beranda</a> <a href="<?php echo base_url(); ?>dashboard" class="current">Tambah Artikel</a> </div>
     <h1>Form validation</h1>
   </div>
   <div class="container-fluid"><hr>
@@ -81,9 +81,9 @@
           </div>
           <div class="widget-content nopadding">
             
-            <?php if($article){ ?>
+          <?php if($pil=='Edit'){ ?>
 	        <?php foreach ($article as $a) { ?>
-            <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>Main/update" name="basic_validate" id="basic_validate" novalidate="novalidate">
+            <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>dashboard/update" name="basic_validate" id="basic_validate" novalidate="novalidate">
                 <input type="hidden" name="id" id="required" value="<?php echo $a->id ?>">
                 <div class="control-group">
                 <label class="control-label">Judul</label>
@@ -128,7 +128,7 @@
             <?php } ?>
 
         	<?php } else { ?>
-            <form class="form-horizontal" method="post" action="#" name="basic_validate" id="basic_validate" novalidate="novalidate">
+            <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>dashboard/insert">
                 <div class="control-group">
                 <label class="control-label">Judul</label>
                 <div class="controls">
@@ -150,7 +150,7 @@
               <div class="control-group">
               <label class="control-label">File upload input</label>
               <div class="controls">
-                <input type="file" name="img" />
+                <input type="file" name="img" accept=".gif,.jpg,.png,.jpeg"/>
               </div>
             </div>
               <div class="form-actions">

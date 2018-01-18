@@ -35,16 +35,41 @@
 			            <div class="inner">
 			                <h2>Menu</h2>
 			                <ul class="links">
-			                    <li><a href="index.html">Home</a></li>
-			                    <li><a href="elements.html">Elements</a></li>
+			                    <li><a href="<?php echo base_url(); ?>main">Home</a></li>
+								<?php if($this->session->userdata('logged_in')) { ?>
+								<li><a href="<?php echo base_url(); ?>dashboard">Dasbor Admin</a></li>
+								<li><a href="<?php echo base_url(); ?>login/logout">Logout Admin</a></li>
+								<?php } else {?>
+								<li><a href="<?php echo base_url(); ?>login">Login</a></li>
+								<?php } ?>
 			                </ul>
 			                <a href="#" class="close">Close</a>
 			            </div>
 			        </nav>
 	    		</div>
 
+				<section class ="fit-image">
+					<div class="container">
+					<h1 class="elements-h"><?php echo $a->title ?></h1><br>
+						<div class="row">
+							<div class="col-md-12" style="color:#fff;">
+		    						<p style="font-size:16px;">
+		    							<?php echo $a->created_by ?></p>	
+		    						</p>
+		    					</div>	
+							<div class="col-md-12">
+								<img src="<?php echo base_url(); ?>/uploads/<?php echo $a->img; ?>" class="img-responsive img-fit" alt="Responsive image" />
+							</div>
+							<div class="col-md-12" style="color:#fff;">
+		    						<p>
+		    							<?php echo $a->content ?></p>	
+		    						</p>
+		    					</div>
+						</div>
+					</div>
+				</section>
 			
-			    <section id="elements-one">
+			    <!--<section id="elements-one">
 		    		<div class="container">
 		    			<div class="row">
 		    				<div class="elements-one-design">
@@ -67,7 +92,7 @@
 							</div>
 						</div>																	
 					</div>
-				</section>
+				</section>-->
 
 				<section id="footer">
 					<div class="container">

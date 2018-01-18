@@ -17,9 +17,9 @@ http://pixelmatrixdesign.com/uniform/themer.html
 /* Global Declaration */
 
 .img-article {
-    width: 150px;
-    height: 80px;
-    display: block;
+    width: 250px;
+    height: 100px;
+    object-fit: cover;
 }
 
 div.selector,
